@@ -1,0 +1,18 @@
+name = "nfd"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+workers_dev = true
+
+# KV namespace binding used by worker.js as the global `nfd`.
+# The `id` is only meaningful for remote deploys; for `wrangler dev`
+# (local mode) the data is stored locally under .wrangler/state.
+[[kv_namespaces]]
+binding = "nfd"
+id = "nfd_local_placeholder"
+
+# Non-secret local defaults. Real values (especially ENV_BOT_TOKEN) should be
+# provided via a local, git-ignored `.dev.vars` file, which overrides these.
+[vars]
+ENV_BOT_TOKEN = "REPLACE_WITH_BOT_TOKEN"
+ENV_BOT_SECRET = "local_dev_secret"
+ENV_ADMIN_UID = "0"
